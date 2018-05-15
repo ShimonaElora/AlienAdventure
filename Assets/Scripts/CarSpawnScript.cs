@@ -14,10 +14,12 @@ public class CarSpawnScript : MonoBehaviour {
 
     public float[] rangeWaitTime;
 
-    private float[] xValues;
+    public float[] xValues;
     private float screenWidth;
 
     private bool shouldSpawn;
+
+    private ObjectPooler objectPooler;
 
 	// Use this for initialization
 	void Start () {
@@ -39,6 +41,8 @@ public class CarSpawnScript : MonoBehaviour {
         zSpawn = Car.GetComponent<Transform>().position.z;
         rotationSpawn = Car.GetComponent<Transform>().rotation;
 
+        objectPooler = GameObject.Find("Object Pooler").GetComponent<ObjectPooler>();
+
 	}
 	
 	// Update is called once per frame
@@ -59,11 +63,14 @@ public class CarSpawnScript : MonoBehaviour {
 
         int index = Random.Range(0, 3);
 
-        GameObject spawnedCar = Instantiate(
-            Car,
+        GameObject car = objectPooler.SpawnFromPool(
+            StringConstants.cars,
             new Vector3(xValues[index], ySpawn, zSpawn),
             rotationSpawn
         );
+
+        car.GetComponent<CarScript>().xIndex = index;
+        car.GetComponent<Transform>().parent = gameObject.GetComponent<Transform>();
 
         shouldSpawn = true;
 

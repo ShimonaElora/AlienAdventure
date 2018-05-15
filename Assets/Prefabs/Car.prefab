@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114396984539813256}
   - component: {fileID: 50295969244080688}
   - component: {fileID: 61256965318285134}
+  - component: {fileID: 122652337018798062}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -142,3 +143,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -1
+--- !u!122 &122652337018798062
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1915210505761570}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4281726463
+  m_Size: 0.7
